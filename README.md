@@ -20,6 +20,11 @@
 
 6.设置开机启动。右击托盘图标选“设为开机自启动”，要取消可再次点击。此项全局生效。
 
+![](https://img-bbs.csdn.net/upload/202002/29/1582959769_345322.png)
+
 ![](https://img-bbs.csdn.net/upload/202002/29/1582960365_72148.png)
+
 ![](https://img-bbs.csdn.net/upload/202002/29/1582960525_245646.png)
-![](https://img-bbs.csdn.net/upload/202002/29/1582960525_245646.png)
+
+
+
