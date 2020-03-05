@@ -471,13 +471,13 @@ Begin VB.Form frmNote
    End
    Begin VB.Image imgRightDown 
       Appearance      =   0  'Flat
-      Height          =   180
+      Height          =   90
       Left            =   3240
       MousePointer    =   8  'Size NW SE
       Picture         =   "frmNote.frx":0014
       Stretch         =   -1  'True
       Top             =   3120
-      Width           =   180
+      Width           =   90
    End
    Begin VB.Label lblAdd 
       AutoSize        =   -1  'True
@@ -728,7 +728,8 @@ End Sub
 '收到窗体大小影响而改变的控件
 Private Sub setControls()
 On Error GoTo err1
-    picMain.Move 135, 360, Me.Width - 280, Me.Height - 530
+'    picMain.Move 135, 360, Me.Width - 280, Me.Height - 530
+    picMain.Move 75, 360, Me.Width - 150, Me.Height - 455
     txtContent.Move 0, 0, picMain.Width, picMain.Height
     lblClose.Move Me.ScaleWidth - lblClose.Width - 135, 0
     
