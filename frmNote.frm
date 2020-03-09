@@ -126,6 +126,29 @@ Begin VB.Form frmNote
          Top             =   2040
          Width           =   375
       End
+      Begin VB.Label lblTimeEnd 
+         Appearance      =   0  'Flat
+         AutoSize        =   -1  'True
+         BackColor       =   &H80000005&
+         BackStyle       =   0  'Transparent
+         Caption         =   "结束时间:"
+         BeginProperty Font 
+            Name            =   "微软雅黑"
+            Size            =   7.5
+            Charset         =   134
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H80000008&
+         Height          =   240
+         Left            =   480
+         TabIndex        =   24
+         Top             =   2640
+         Visible         =   0   'False
+         Width           =   630
+      End
       Begin VB.Label lblColor 
          BackStyle       =   0  'Transparent
          Height          =   135
@@ -323,6 +346,7 @@ Begin VB.Form frmNote
          Height          =   240
          Left            =   255
          TabIndex        =   14
+         Tag             =   "showEndTime"
          Top             =   2760
          Visible         =   0   'False
          Width           =   300
@@ -641,13 +665,13 @@ Private Sub Form_Load()
                 dblAllSeconds = Val(dblNumber) * tDanwei(intDanweiIndex).lngSeconds '如果单位是天以上，那么这里的数不是特别准确，因为月份是根据30天计算
                 dateRemindEnd = DateAdd("s", dblAllSeconds, dateRemindStart)   '得到准确的结束时间
             End If
-        
+            lblTimeEnd.Caption = "结束时间:" & dateRemindEnd
 '            dateRemindEnd = calcRemindDate() '提醒的结束时间 '小数无法计算，故弃用20200227
 
             strNoteCreateDate = v(13)
             shpBG.Visible = True
             shpFront.Visible = True
-            lblShengyu.Visible = True
+            If Not lblTimeEnd.Visible Then lblShengyu.Visible = True '如果dateRemindEnd显示着则不改变lblShengyu的可见性
             Combo1.Enabled = True
             Combo2.Enabled = True
             Timer1.Enabled = True '启动计时器
@@ -709,6 +733,7 @@ Private Sub Form_DblClick()
     shpBG.Move HScroll1.Left, shpBG.Top, HScroll1.Width, 50
     shpFront.Move shpBG.Left, shpBG.Top, shpBG.Width, shpBG.Height
     lblShengyu.Top = shpBG.Top + shpBG.Height + 0
+    lblTimeEnd.Move lblShengyu.Left, lblShengyu.Top
     
     picSet.Visible = True
 End Sub
@@ -743,7 +768,7 @@ Private Sub Check3_Click()
     Combo2.Enabled = Combo1.Enabled
     shpBG.Visible = Combo1.Enabled
     shpFront.Visible = Combo1.Enabled
-    lblShengyu.Visible = Combo1.Enabled
+    If Not lblTimeEnd.Visible Then lblShengyu.Visible = Combo1.Enabled
     If Check3.Value = 1 Then '选中了就更新计时
         dateRemindStart = Format(Now, "yyyy-mm-dd hh:nn:ss") '只要改动了就要更新
         dblNumber = Combo1.Text
@@ -759,6 +784,7 @@ Private Sub Check3_Click()
             dblAllSeconds = Val(dblNumber) * tDanwei(intDanweiIndex).lngSeconds '如果单位是天以上，那么这里的数不是特别准确，因为月份是根据30天计算
             dateRemindEnd = DateAdd("s", dblAllSeconds, Now)  '得到准确的结束时间
         End If
+        lblTimeEnd.Caption = "结束时间:" & dateRemindEnd
         
         lblShengyu.Caption = "计算中 ..."
         Timer1.Enabled = True
@@ -797,6 +823,16 @@ End Sub
 
 Private Sub Combo2_Click()
     Call Check3_Click
+End Sub
+
+Private Sub lblShengyu_Click()
+    lblShengyu.Visible = False
+    lblTimeEnd.Visible = True
+End Sub
+
+Private Sub lblTimeEnd_Click()
+    lblTimeEnd.Visible = False
+    lblShengyu.Visible = True
 End Sub
 
 Private Sub txtContent_Change()
