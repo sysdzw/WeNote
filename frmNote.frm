@@ -731,7 +731,8 @@ Private Sub Form_DblClick()
     lblTopTitle.Left = (picSet.Width - lblTopTitle.Width) \ 2
     
     shpBG.Move HScroll1.Left, shpBG.Top, HScroll1.Width, 50
-    shpFront.Move shpBG.Left, shpBG.Top, shpBG.Width, shpBG.Height
+    shpFront.Move shpBG.Left, shpBG.Top
+    shpFront.Height = shpBG.Height
     lblShengyu.Top = shpBG.Top + shpBG.Height + 0
     lblTimeEnd.Move lblShengyu.Left, lblShengyu.Top
     
