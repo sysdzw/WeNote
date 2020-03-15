@@ -99,7 +99,7 @@ End Sub
 
 Private Sub mnuHelp_Click()
     Dim strHelp$
-    strHelp = "WeNote | 微便签 V1.0 使用说明：" & vbCrLf & vbCrLf & _
+    strHelp = "WeNote | 微便签 V" & App.Major & "." & App.Minor & "." & App.Revision & " 使用说明：" & vbCrLf & vbCrLf & _
         "本软件参考win7系统自带便签开发，不过比系统自带的好用方便且更强大。下面为具体使用方法：" & vbCrLf & vbCrLf & _
         "【1】新建便签。方法有3种：a.直接双击exe，如果当前没有便签会自动新建一个。b.点击已有便签的左上角+新建。c.右击系统托盘选择菜单“新建一个便签”" & vbCrLf & vbCrLf & _
         "【2】设置透明度。双击便签顶部打开设置，拉动滚动条调整成您希望的透明度。此项仅对当前便签有效。" & vbCrLf & vbCrLf & _
