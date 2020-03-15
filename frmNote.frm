@@ -2,20 +2,20 @@ VERSION 5.00
 Begin VB.Form frmNote 
    Appearance      =   0  'Flat
    AutoRedraw      =   -1  'True
-   BackColor       =   &H00C0FFFF&
+   BackColor       =   &H80000005&
    BorderStyle     =   0  'None
    Caption         =   "WeNote"
    ClientHeight    =   3615
    ClientLeft      =   2130
    ClientTop       =   1785
-   ClientWidth     =   4395
+   ClientWidth     =   4425
    ControlBox      =   0   'False
    Icon            =   "frmNote.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   3615
-   ScaleWidth      =   4395
+   ScaleWidth      =   4425
    ShowInTaskbar   =   0   'False
    Begin VB.Timer Timer1 
       Enabled         =   0   'False
@@ -36,6 +36,44 @@ Begin VB.Form frmNote
       Top             =   360
       Visible         =   0   'False
       Width           =   3255
+      Begin VB.PictureBox lblShengyu 
+         Appearance      =   0  'Flat
+         AutoRedraw      =   -1  'True
+         BackColor       =   &H00FFFFFF&
+         BorderStyle     =   0  'None
+         BeginProperty Font 
+            Name            =   "微软雅黑"
+            Size            =   7.5
+            Charset         =   134
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H80000008&
+         Height          =   255
+         Left            =   240
+         ScaleHeight     =   255
+         ScaleWidth      =   2775
+         TabIndex        =   25
+         Top             =   2760
+         Width           =   2775
+      End
+      Begin VB.PictureBox picProcessFront 
+         Appearance      =   0  'Flat
+         AutoRedraw      =   -1  'True
+         BackColor       =   &H008080FF&
+         BorderStyle     =   0  'None
+         ForeColor       =   &H80000008&
+         Height          =   105
+         Left            =   240
+         ScaleHeight     =   105
+         ScaleWidth      =   1095
+         TabIndex        =   24
+         Top             =   2640
+         Visible         =   0   'False
+         Width           =   1095
+      End
       Begin VB.ComboBox Combo2 
          Enabled         =   0   'False
          BeginProperty Font 
@@ -125,29 +163,6 @@ Begin VB.Form frmNote
          TabIndex        =   6
          Top             =   2040
          Width           =   375
-      End
-      Begin VB.Label lblTimeEnd 
-         Appearance      =   0  'Flat
-         AutoSize        =   -1  'True
-         BackColor       =   &H80000005&
-         BackStyle       =   0  'Transparent
-         Caption         =   "结束时间:"
-         BeginProperty Font 
-            Name            =   "微软雅黑"
-            Size            =   7.5
-            Charset         =   134
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H80000008&
-         Height          =   240
-         Left            =   480
-         TabIndex        =   24
-         Top             =   2640
-         Visible         =   0   'False
-         Width           =   630
       End
       Begin VB.Label lblColor 
          BackStyle       =   0  'Transparent
@@ -329,7 +344,7 @@ Begin VB.Form frmNote
          Top             =   1080
          Width           =   360
       End
-      Begin VB.Label lblShengyu 
+      Begin VB.Label lblShengyuxx 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
          Caption         =   "剩余"
@@ -344,22 +359,11 @@ Begin VB.Form frmNote
          EndProperty
          ForeColor       =   &H00404040&
          Height          =   240
-         Left            =   255
+         Left            =   2400
          TabIndex        =   14
-         Tag             =   "showEndTime"
-         Top             =   2760
+         Top             =   2400
          Visible         =   0   'False
          Width           =   300
-      End
-      Begin VB.Shape shpFront 
-         BorderColor     =   &H008080FF&
-         FillColor       =   &H008080FF&
-         FillStyle       =   0  'Solid
-         Height          =   105
-         Left            =   240
-         Top             =   2640
-         Visible         =   0   'False
-         Width           =   1815
       End
       Begin VB.Shape shpBG 
          BorderColor     =   &H00C0C0C0&
@@ -588,6 +592,7 @@ Dim intDanweiIndex As Integer '时间单位结构图数组的索引
 Dim dblAllSeconds As Double '所需要的总秒数
 Dim strNoteCreateDate As String
 Dim strInteval As String
+Dim isShowEndTime As Boolean
 
 Dim isHasBeenLoaded As Boolean
 Dim isNeedRestoreFormSize As Boolean '如果设置窗口改变了窗口大小那么需要调整窗口大小
@@ -665,13 +670,11 @@ Private Sub Form_Load()
                 dblAllSeconds = Val(dblNumber) * tDanwei(intDanweiIndex).lngSeconds '如果单位是天以上，那么这里的数不是特别准确，因为月份是根据30天计算
                 dateRemindEnd = DateAdd("s", dblAllSeconds, dateRemindStart)   '得到准确的结束时间
             End If
-            lblTimeEnd.Caption = "结束时间:" & dateRemindEnd
 '            dateRemindEnd = calcRemindDate() '提醒的结束时间 '小数无法计算，故弃用20200227
 
             strNoteCreateDate = v(13)
             shpBG.Visible = True
-            shpFront.Visible = True
-            If Not lblTimeEnd.Visible Then lblShengyu.Visible = True '如果dateRemindEnd显示着则不改变lblShengyu的可见性
+            picProcessFront.Visible = True
             Combo1.Enabled = True
             Combo2.Enabled = True
             Timer1.Enabled = True '启动计时器
@@ -731,10 +734,9 @@ Private Sub Form_DblClick()
     lblTopTitle.Left = (picSet.Width - lblTopTitle.Width) \ 2
     
     shpBG.Move HScroll1.Left, shpBG.Top, HScroll1.Width, 50
-    shpFront.Move shpBG.Left, shpBG.Top
-    shpFront.Height = shpBG.Height
-    lblShengyu.Top = shpBG.Top + shpBG.Height + 0
-    lblTimeEnd.Move lblShengyu.Left, lblShengyu.Top
+    picProcessFront.Move shpBG.Left, shpBG.Top
+    picProcessFront.Height = shpBG.Height
+    lblShengyu.Top = shpBG.Top + shpBG.Height + 45
     
     picSet.Visible = True
 End Sub
@@ -768,8 +770,9 @@ Private Sub Check3_Click()
     Combo1.Enabled = (Check3.Value = 1)
     Combo2.Enabled = Combo1.Enabled
     shpBG.Visible = Combo1.Enabled
-    shpFront.Visible = Combo1.Enabled
-    If Not lblTimeEnd.Visible Then lblShengyu.Visible = Combo1.Enabled
+    lblShengyu.Visible = Combo1.Enabled
+    picProcessFront.Width = shpBG.Width
+    picProcessFront.Visible = Combo1.Enabled
     If Check3.Value = 1 Then '选中了就更新计时
         dateRemindStart = Format(Now, "yyyy-mm-dd hh:nn:ss") '只要改动了就要更新
         dblNumber = Combo1.Text
@@ -785,9 +788,8 @@ Private Sub Check3_Click()
             dblAllSeconds = Val(dblNumber) * tDanwei(intDanweiIndex).lngSeconds '如果单位是天以上，那么这里的数不是特别准确，因为月份是根据30天计算
             dateRemindEnd = DateAdd("s", dblAllSeconds, Now)  '得到准确的结束时间
         End If
-        lblTimeEnd.Caption = "结束时间:" & dateRemindEnd
         
-        lblShengyu.Caption = "计算中 ..."
+        printDaojishi "计算中 ..."
         Timer1.Enabled = True
     Else
         Timer1.Enabled = False
@@ -825,15 +827,15 @@ End Sub
 Private Sub Combo2_Click()
     Call Check3_Click
 End Sub
-
+'通过tag来处理切换问题
+'点击时候如果tag是showEndTime，那么就设置为当前时间，如果不是那么就显示为
 Private Sub lblShengyu_Click()
-    lblShengyu.Visible = False
-    lblTimeEnd.Visible = True
-End Sub
-
-Private Sub lblTimeEnd_Click()
-    lblTimeEnd.Visible = False
-    lblShengyu.Visible = True
+    isShowEndTime = Not isShowEndTime
+    If isShowEndTime Then
+        printDaojishi "结束时间：" & dateRemindEnd
+    Else
+        printDaojishi lblShengyu.Tag
+    End If
 End Sub
 
 Private Sub txtContent_Change()
@@ -1063,11 +1065,12 @@ Private Sub Timer1_Timer()
         dblLeave = DateDiff("s", Now, dateRemindEnd)  '剩余的时间，默认为设置的单位 s,n,h,ww,d,m,y
         dblWidth = Int(dblLeave / dblAllSeconds * shpBG.Width) '进度条的宽度
         strDaojishi = transSecondsToAll(DateDiff("s", Now, dateRemindEnd))
-        If strDaojishi <> "" Then strTip = "剩余 " & strDaojishi
-        If strTip <> lblShengyu.Caption Then
-            lblShengyu.Caption = strTip
-            If dblWidth <> shpFront.Width Then
-                shpFront.Width = dblWidth ': Check1.Caption = dblWidth & " " & shpFront.Width: DoEvents
+        If strDaojishi <> "" Then strTip = "剩余：" & strDaojishi
+        If strTip <> lblShengyu.Tag Then
+            lblShengyu.Tag = strTip
+            If Not isShowEndTime Then printDaojishi strTip
+            If dblWidth <> picProcessFront.Width Then
+                picProcessFront.Width = dblWidth ': Check1.Caption = dblWidth & " " & picProcessFront.Width: DoEvents
             End If
         End If
     End If
@@ -1095,4 +1098,9 @@ Private Sub txtContent_Click()
     If picSet.Visible = True Then
         Call lblSetClose_Click
     End If
+End Sub
+'打印倒计时
+Private Sub printDaojishi(ByVal strMsg As String)
+    lblShengyu.Cls
+    lblShengyu.Print strMsg
 End Sub
