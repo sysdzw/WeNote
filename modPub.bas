@@ -54,7 +54,7 @@ Sub Main()
     strAppPath = App.Path
     If Right(strAppPath, 1) <> "\" Then strAppPath = strAppPath & "\"
     
-    strInfo = "WeNote | Î¢±ãÇ© V1.0" & vbCrLf & vbCrLf & _
+    strInfo = "WeNote | Î¢±ãÇ© V" & App.Major & "." & App.Minor & "." & App.Revision & vbCrLf & vbCrLf & _
         "  ×÷Õß:sysdzw" & vbCrLf & _
         "  Ö÷Ò³:https://blog.csdn.net/sysdzw" & vbCrLf & _
         "  Q  Q:171977759" & vbCrLf & _
