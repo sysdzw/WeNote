@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmNote 
    Appearance      =   0  'Flat
    AutoRedraw      =   -1  'True
-   BackColor       =   &H80000005&
+   BackColor       =   &H00C0FFFF&
    BorderStyle     =   0  'None
    Caption         =   "WeNote"
    ClientHeight    =   3615
@@ -10,6 +10,8 @@ Begin VB.Form frmNote
    ClientTop       =   1785
    ClientWidth     =   4425
    ControlBox      =   0   'False
+   FillColor       =   &H00C0E0FF&
+   ForeColor       =   &H00C0E0FF&
    Icon            =   "frmNote.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
@@ -459,7 +461,7 @@ Begin VB.Form frmNote
    End
    Begin VB.PictureBox picMain 
       AutoRedraw      =   -1  'True
-      BackColor       =   &H00C0E0FF&
+      BackColor       =   &H00FFFFFF&
       BorderStyle     =   0  'None
       Height          =   2655
       Left            =   120
