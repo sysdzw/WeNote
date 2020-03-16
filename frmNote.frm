@@ -790,7 +790,7 @@ Private Sub Check3_Click()
             dateRemindEnd = DateAdd("s", dblAllSeconds, Now)  '得到准确的结束时间
         End If
         
-        printDaojishi "计算中 ..."
+        If Not isShowEndTime Then printDaojishi "计算中 ..."
         Timer1.Enabled = True
     Else
         Timer1.Enabled = False
