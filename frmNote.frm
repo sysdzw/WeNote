@@ -575,12 +575,12 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Private Declare Function ReleaseCapture Lib "user32" () As Long
-Private Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Long) As Long
+Private Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hWnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Long) As Long
 Const HTCAPTION = 2
 Const WM_NCLBUTTONDOWN = &HA1
 Const WM_LBUTTONUP = &H202
 
-Private Declare Function SetForegroundWindow Lib "user32" (ByVal hwnd As Long) As Long
+Private Declare Function SetForegroundWindow Lib "user32" (ByVal hWnd As Long) As Long
 Dim isMovingRightDown As Boolean, x1RightDown As Integer, y1RightDown As Integer
 Dim isMovingLeftDown As Boolean, x1LeftDown As Integer, y1LeftDown As Integer
 Dim orgWidth&, orgHeight&
@@ -601,6 +601,9 @@ Dim isHasBeenLoaded As Boolean
 Dim isNeedRestoreFormSize As Boolean '如果设置窗口改变了窗口大小那么需要调整窗口大小
 
 Private Sub Form_Load()
+    
+    If isNeedSetToDesktop Then SetParent Me.hWnd, lngHwndDesktop '根据需要设置是否嵌入桌面
+    
     lblAdd.Move 135, 0
     lblClose.BackStyle = 0
     
@@ -619,7 +622,7 @@ Private Sub Form_Load()
     Combo2.Text = "分钟"
     
     Dim w As New clsWindow
-    w.hwnd = Me.hwnd
+    w.hWnd = Me.hWnd
     
     picMain.BackColor = vbWhite
     
@@ -637,7 +640,7 @@ Private Sub Form_Load()
         Me.Move v(1), v(2), v(3), v(4)
         lngLeftLatest = Me.Left
         lngTopLatest = Me.Top
-        Call setControls
+        Call setControls(v(3), v(4))
         imgRightDown.Move Me.ScaleWidth - imgRightDown.Width, Me.ScaleHeight - imgRightDown.Height
         imgLeftDown.Move 0, Me.ScaleHeight - imgRightDown.Height
         Me.BackColor = v(7) '先设置颜色
@@ -748,7 +751,7 @@ Private Sub Form_MouseDown(Button As Integer, Shift As Integer, X As Single, Y A
     If Button = 1 Then ' Checking for Left Button only
         Dim ReturnVal As Long
         X = ReleaseCapture()
-        ReturnVal = SendMessage(hwnd, WM_NCLBUTTONDOWN, HTCAPTION, 0)
+        ReturnVal = SendMessage(hWnd, WM_NCLBUTTONDOWN, HTCAPTION, 0)
         Call saveCurrentSet
     End If
 End Sub
@@ -757,15 +760,29 @@ Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y A
     lblAdd.ForeColor = &H808080
 End Sub
 '收到窗体大小影响而改变的控件
-Private Sub setControls()
-On Error GoTo err1
+Private Sub setControls(Optional lngWidth, Optional lngHeight)
+On Error GoTo Err1
 '    picMain.Move 135, 360, Me.Width - 280, Me.Height - 530
-    picMain.Move 75, 360, Me.Width - 150, Me.Height - 455
+'    picMain.Move 75, 360, Me.Width - 150, Me.Height - 455
+    If IsMissing(lngWidth) Then lngWidth = Me.Width
+    If IsMissing(lngHeight) Then lngHeight = Me.Height
+    picMain.Move 75, 360, lngWidth - 150, lngHeight - 455
     txtContent.Move 0, 0, picMain.Width, picMain.Height
     lblClose.Move Me.ScaleWidth - lblClose.Width - 135, 0
     
     If picSet.Visible Then picSet.Move (Me.ScaleWidth - picSet.Width) \ 2, (Me.ScaleHeight - picSet.Height) \ 2 '如果设置还显示着，那么也要相应的调整大小
-err1:
+Err1:
+End Sub
+Private Sub Combo1_Click()
+    Call Check3_Click
+End Sub
+
+Private Sub Combo1_Change()
+    Call Check3_Click
+End Sub
+
+Private Sub Combo2_Click()
+    Call Check3_Click
 End Sub
 Private Sub Check3_Click()
     If Not isHasBeenLoaded Then Exit Sub '窗体未载入初始化好暂时不做这些动作
@@ -819,17 +836,6 @@ Private Function calcRemindDate() As Date
     End If
     calcRemindDate = DateAdd(strInteval, dblNumber, CDate(dateRemindStart))
 End Function
-Private Sub Combo1_Click()
-    Call Check3_Click
-End Sub
-
-Private Sub Combo1_Change()
-    Call Check3_Click
-End Sub
-
-Private Sub Combo2_Click()
-    Call Check3_Click
-End Sub
 '通过tag来处理切换问题
 '点击时候如果tag是showEndTime，那么就设置为当前时间，如果不是那么就显示为
 Private Sub lblShengyu_Click()
@@ -855,7 +861,7 @@ Private Sub lblMore_Click()
     Dim cc As ChooseColor
     
     cc.lStructSize = Len(cc)
-    cc.hwndOwner = Me.hwnd
+    cc.hwndOwner = Me.hWnd
     cc.hInstance = App.hInstance
     cc.flags = 0
     cc.lpCustColors = String$(16 * 4, 0)
@@ -902,7 +908,7 @@ Private Sub lblClose_MouseUp(Button As Integer, Shift As Integer, X As Single, Y
         Next
         
         Dim w As New clsWindow
-        w.hwnd = Me.hwnd
+        w.hWnd = Me.hWnd
         If lblClose.Tag = "" Then '由于是空的，也没有创建数据记录，所以不存在删除的问题,直接加快退出即可
             w.FadeOut 40, True
             If lngNoteCount = 1 Then '表示当前是最后一个便签，那么退出所有程序
@@ -995,15 +1001,20 @@ Private Sub imgRightDown_MouseUp(Button As Integer, Shift As Integer, X As Singl
 End Sub
 
 Private Sub Check1_Click()
+    If isNeedSetToDesktop Then
+        MsgBox "当前为嵌入桌面模式，无法设置窗口置顶。如果需要取消嵌入桌面请点击右下角图标取消勾选。", vbInformation
+        Exit Sub
+    End If
+    
     Dim w As New clsWindow
-    w.hwnd = Me.hwnd
+    w.hWnd = Me.hWnd
     w.SetTop Check1.Value = 1
     Call saveCurrentSet
 End Sub
 
 Private Sub HScroll1_Change()
     Dim w As New clsWindow
-    w.hwnd = Me.hwnd
+    w.hWnd = Me.hWnd
     w.MakeTransparent HScroll1.Value
     Call saveCurrentSet
 End Sub
@@ -1057,7 +1068,7 @@ Private Sub Timer1_Timer()
         Call saveCurrentSet '保存到数据文件
 
         Dim w As New clsWindow
-        w.hwnd = Me.hwnd
+        w.hWnd = Me.hWnd
         w.Focus
         w.Shake
         MsgBox "您于" & dateRemindStart & "设置的“" & dblNumber & strDanwei & "”提醒时间已到！提醒内容：" & vbCrLf & vbCrLf & txtContent.Text & vbCrLf & vbCrLf & "当前时间：" & Now, vbInformation

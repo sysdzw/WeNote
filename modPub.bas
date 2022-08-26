@@ -17,6 +17,8 @@ Public isFirstNote As Boolean '是否是第一张
 
 Public Declare Function ChooseColor Lib "comdlg32.dll" Alias "ChooseColorA" (pChoosecolor As ChooseColor) As Long
 Private Declare Function MoveWindow Lib "user32" (ByVal hwnd As Long, ByVal X As Long, ByVal Y As Long, ByVal nWidth As Long, ByVal nHeight As Long, ByVal bRepaint As Long) As Long
+Private Declare Function timeGetTime Lib "winmm.dll" () As Long
+Public Declare Function SetParent Lib "user32" (ByVal hWndChild As Long, ByVal hWndNewParent As Long) As Long
 
 's,n,h,d,m,yyyy
 Public Type ShijianDanwei
@@ -44,9 +46,12 @@ Public Const NOTE_DEFAULT_HEIGHT = 3615 '便签默认高度
 Public Const NEW_NOTE_MOVE_RIGHT = 320 '新便签
 Public Const NEW_NOTE_MOVE_DOWN = 570
 
+Public lngHwndDesktop As Long '桌面的句柄
+Public isNeedSetToDesktop As Boolean '是否需要设置嵌入到桌面
+
 Sub Main()
+    Dim w As New clsWindow
     If App.PrevInstance Then '防止重复运行
-        Dim w As New clsWindow
         w.GetWindowByTitle("WeNote", 1).Focus  '调出当前已经打开任意的窗口激活显示
         End
     End If
@@ -61,6 +66,9 @@ Sub Main()
         "  邮箱:sysdzw@163.com" & vbCrLf & vbCrLf & _
         "2020-01-20"
     Call initDanwei
+    
+    lngHwndDesktop = w.GetWindowByClassName("Progman", 1).hwnd  '得到桌面句柄
+    isNeedSetToDesktop = isSetToDesktop()
     
     Load frmStartup
     strDataFile = strAppPath & "数据.txt"
@@ -229,4 +237,21 @@ Public Function regTest(ByVal strData$, strPattern$) As Boolean
     reg.Pattern = strPattern
     regTest = reg.Test(strData)
     Set reg = Nothing
+End Function
+'延时，单位为毫秒
+Public Function Wait(ByVal MilliSeconds As Long)
+    Dim dSavetime As Double
+    dSavetime = timeGetTime + MilliSeconds   '记下开始时的时间
+    While timeGetTime < dSavetime '循环等待
+        DoEvents '转让控制权，以便让操作系统处理其它的事件
+    Wend
+End Function
+'检查是否设置到桌面
+Public Function isSetToDesktop() As Boolean
+    If GetSetting("WeNote", "Set", "SetToDesktop") = "" Then
+        isSetToDesktop = False
+    Else
+        isSetToDesktop = (GetSetting("WeNote", "Set", "SetToDesktop") = "1")
+        
+    End If
 End Function

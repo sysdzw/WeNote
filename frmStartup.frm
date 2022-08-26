@@ -4,7 +4,7 @@ Begin VB.Form frmStartup
    Caption         =   "系统托盘管理"
    ClientHeight    =   3195
    ClientLeft      =   150
-   ClientTop       =   720
+   ClientTop       =   795
    ClientWidth     =   4680
    Icon            =   "frmStartup.frx":0000
    LinkTopic       =   "Form1"
@@ -29,7 +29,10 @@ Begin VB.Form frmStartup
          Caption         =   "-"
       End
       Begin VB.Menu mnuRunStartup 
-         Caption         =   "设为开机自启动(&S)"
+         Caption         =   "开机启动(&S)"
+      End
+      Begin VB.Menu mnuToDesktop 
+         Caption         =   "嵌入桌面(&Q)"
       End
       Begin VB.Menu line2 
          Caption         =   "-"
@@ -61,27 +64,28 @@ Attribute VB_Exposed = False
 '编    程：sysdzw 原创开发，如您对本软件进行改进或拓展请发我一份
 '发布日期：2020-03-02
 '博    客：https://blog.csdn.net/sysdzw
-'用户手册：https://www.kancloud.cn/sysdzw/clswindow/
 'Email   ：sysdzw@163.com
 'QQ      ：171977759
 '版    本：V1.0 初版                                                           2020-02-20
-'==============================================================================================Option Explicit
+'          V1.1 解决了倒计时更新时会闪动的小问题                                2020-03-15
+'==============================================================================================
+Option Explicit
 Dim isDealing As Boolean
 
-Private Declare Function SetForegroundWindow Lib "user32" (ByVal hwnd As Long) As Long
+Private Declare Function SetForegroundWindow Lib "user32" (ByVal hWnd As Long) As Long
  
 Private Sub Form_Load()
-    Icon_Add Me.hwnd, "微便签", Me.Icon, 0
-    mnuRunStartup.Caption = IIf(isHasSetAutoRun(), "设为手动运行(&S)", "设为开机自启动(&S)")
+    Icon_Add Me.hWnd, "微便签", Me.Icon, 0
+    mnuRunStartup.Checked = isHasSetAutoRun()
+    mnuToDesktop.Checked = isNeedSetToDesktop
 End Sub
-
 Private Sub mnuAbout_Click()
     MsgBox strInfo, vbInformation
 End Sub
 
 Public Sub mnuExit_Click()
     If isFormAllLoadCompleted Then
-        Call Icon_Del(Me.hwnd, 0)
+        Call Icon_Del(Me.hWnd, 0)
         
         Dim frm As Form
         Dim w As New clsWindow
@@ -117,14 +121,40 @@ Private Sub mnuNewNote_Click()
     Dim frmNote As New frmNote
     Load frmNote
 End Sub
-
+'开机启动
 Private Sub mnuRunStartup_Click()
-    If mnuRunStartup.Caption = "设为手动运行(&S)" Then
-        Call cancelAutoRun
-        mnuRunStartup.Caption = "设为开机自启动(&S)"
-    Else
+    mnuRunStartup.Checked = Not mnuRunStartup.Checked
+    If mnuRunStartup.Checked Then
         Call setAutoRun
-        mnuRunStartup.Caption = "设为手动运行(&S)"
+    Else
+        Call cancelAutoRun
+    End If
+End Sub
+'嵌入桌面
+Private Sub mnuToDesktop_Click()
+    mnuToDesktop.Checked = Not mnuToDesktop.Checked
+    isNeedSetToDesktop = mnuToDesktop.Checked
+    
+'    Dim frm As Form
+'    Dim w As New clsWindow
+'    For Each frm In Forms
+'        If frm.Caption = "WeNote" Then
+'            SetParent frm.hWnd, IIf(isNeedSetToDesktop, lngHwndDesktop, 0)
+'        End If
+'    Next
+
+    SaveSetting "WeNote", "Set", "SetToDesktop", IIf(isNeedSetToDesktop, "1", "0")
+    If isNeedSetToDesktop Then
+        MsgBox "已设置嵌入桌面，请重新打开软件以便生效。", vbInformation
+        Call mnuExit_Click
+    Else
+        Dim frm As Form
+        Dim w As New clsWindow
+        For Each frm In Forms
+            If frm.Caption = "WeNote" Then
+                SetParent frm.hWnd, IIf(isNeedSetToDesktop, lngHwndDesktop, 0)
+            End If
+        Next
     End If
 End Sub
 
@@ -135,7 +165,7 @@ Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y A
     lMsg = X / Screen.TwipsPerPixelX
     Select Case lMsg
     Case WM_RBUTTONUP
-        SetForegroundWindow Me.hwnd
+        SetForegroundWindow Me.hWnd
         PopupMenu mnuSys
     Case WM_LBUTTONDOWN
         mnuShowAllNote_Click
@@ -147,7 +177,7 @@ Private Sub mnuShowAllNote_Click()
     Dim w As New clsWindow
     For Each frm In Forms
         If frm.Caption = "WeNote" Then
-            w.hwnd = frm.hwnd
+            w.hWnd = frm.hWnd
             frm.Visible = True
             w.Focus
         End If
@@ -159,8 +189,9 @@ Private Sub mnuHideAllNote_Click()
     Dim w As New clsWindow
     For Each frm In Forms
         If frm.Caption = "WeNote" Then
-            w.hwnd = frm.hwnd
+            w.hWnd = frm.hWnd
             w.Hide
         End If
     Next
 End Sub
+
