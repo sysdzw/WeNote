@@ -569,8 +569,9 @@ Attribute VB_Exposed = False
 '博    客：https://blog.csdn.net/sysdzw
 'Email   ：sysdzw@163.com
 'QQ      ：171977759
-'版    本：V1.0 初版                                                           2020-02-20
+'版    本：V1.0 初版                                                            2020-02-20
 '          V1.1 解决了倒计时更新时会闪动的小问题                                2020-03-15
+'          V1.2 增加了嵌入桌面的功能                                            2022-08-29
 '==============================================================================================
 Option Explicit
 
@@ -627,7 +628,7 @@ Private Sub Form_Load()
     picMain.BackColor = vbWhite
     
     '1   1500    300 5000    3000    aa  100 343252  是  是  5   分钟    2020-2-20 11:30:11  2020-2-20 11:30:11
-    If strInitData <> "" Then  '说明是需要初始化的
+    If strInitData <> "" Then  '说明是需要读取文件内容初始化的
         Me.Tag = strInitData
         strInitData = ""
         Dim v
@@ -685,7 +686,7 @@ Private Sub Form_Load()
             Combo2.Enabled = True
             Timer1.Enabled = True '启动计时器
         End If
-    Else
+    Else '新建窗口的初始化
         If isFirstNote Then '表示系统当前没有任何便签，这个便签是系统自动新增的第一个，那么就移动到左上角。一般是在程序第一次被运行时。或者0便签情况下双击exe
             isFirstNote = False
             Me.Move (Screen.Width - Me.ScaleWidth) - 200, 180 * 15, NOTE_DEFAULT_WIDTH, NOTE_DEFAULT_HEIGHT
@@ -916,7 +917,7 @@ Private Sub lblClose_MouseUp(Button As Integer, Shift As Integer, X As Single, Y
             End If
         Else
             Dim isTop As Boolean
-            isTop = w.IsTopmost
+            isTop = w.IsTopMost
             If isTop Then w.SetPosNormal
             If MsgBox("【删除便签】" & vbCrLf & vbCrLf & "您确定要删除此便签吗？删除将不可恢复。如果想隐藏便签可以右击右下角托盘图标选择对应菜单隐藏。", vbQuestion + vbYesNo) = vbYes Then
                 Dim strDataFromFile$

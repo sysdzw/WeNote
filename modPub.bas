@@ -16,7 +16,7 @@ Public isFormAllLoadCompleted As Boolean
 Public isFirstNote As Boolean '是否是第一张
 
 Public Declare Function ChooseColor Lib "comdlg32.dll" Alias "ChooseColorA" (pChoosecolor As ChooseColor) As Long
-Private Declare Function MoveWindow Lib "user32" (ByVal hwnd As Long, ByVal X As Long, ByVal Y As Long, ByVal nWidth As Long, ByVal nHeight As Long, ByVal bRepaint As Long) As Long
+Private Declare Function MoveWindow Lib "user32" (ByVal hWnd As Long, ByVal X As Long, ByVal Y As Long, ByVal nWidth As Long, ByVal nHeight As Long, ByVal bRepaint As Long) As Long
 Private Declare Function timeGetTime Lib "winmm.dll" () As Long
 Public Declare Function SetParent Lib "user32" (ByVal hWndChild As Long, ByVal hWndNewParent As Long) As Long
 
@@ -67,12 +67,13 @@ Sub Main()
         "2020-01-20"
     Call initDanwei
     
-    lngHwndDesktop = w.GetWindowByClassName("Progman", 1).hwnd  '得到桌面句柄
+    lngHwndDesktop = w.GetWindowByClassName("Progman", 1).hWnd  '得到桌面句柄
     isNeedSetToDesktop = isSetToDesktop()
     
     Load frmStartup
     strDataFile = strAppPath & "数据.txt"
     strData = fileStr(strDataFile)
+    If InStr(strData, vbCr) > 0 And InStr(strData, vbCrLf) = 0 Then strData = Replace(strData, vbCr, vbCrLf) '有些系统不知道怎么会生成dos格式的，此行目的是去除此影响
     If strData <> "" Then
         Dim vLine, i%, j%
         vLine = Split(strData, vbCrLf)
@@ -128,7 +129,7 @@ Public Sub setComboHeight(oComboBox As ComboBox, lNewHeight As Long)
     If TypeOf oComboBox.Parent Is Frame Then Exit Sub
     oldscalemode = oComboBox.Parent.ScaleMode
     oComboBox.Parent.ScaleMode = vbPixels
-    MoveWindow oComboBox.hwnd, lngLeft \ 15, lngTop \ 15, lngWidth \ 15, lNewHeight, 1
+    MoveWindow oComboBox.hWnd, lngLeft \ 15, lngTop \ 15, lngWidth \ 15, lNewHeight, 1
     oComboBox.Parent.ScaleMode = oldscalemode
 End Sub
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -142,7 +143,7 @@ End Sub
 '备注：sysdzw 于 2007-5-2 提供
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Public Function writeToFile(ByVal strFileName$, ByVal strContent$, Optional isCover As Boolean = True) As Boolean
-    On Error GoTo err1
+    On Error GoTo Err1
     Dim fileHandl%
     fileHandl = FreeFile
     If isCover Then
@@ -154,7 +155,7 @@ Public Function writeToFile(ByVal strFileName$, ByVal strContent$, Optional isCo
     Close #fileHandl
     writeToFile = True
     Exit Function
-err1:
+Err1:
     writeToFile = False
 End Function
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -166,7 +167,7 @@ End Function
 '备注：sysdzw 于 2007-5-3 提供
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Public Function fileStr(ByVal strFileName As String) As String
-    On Error GoTo err1
+    On Error GoTo Err1
     Dim lFile&
     lFile = FreeFile
     Open strFileName For Input As #lFile
@@ -178,7 +179,7 @@ Public Function fileStr(ByVal strFileName As String) As String
     If Left(fileStr, 2) = vbCrLf Then fileStr = Mid(fileStr, 3)
     If Right(fileStr, 2) = vbCrLf Then fileStr = Left(fileStr, Len(fileStr) - 2)
     Exit Function
-err1:
+Err1:
 '    MsgBox "不存在该文件或该文件不能访问！" & vbCrLf & strFileName, vbExclamation
 End Function
 Public Function regGetStrSub1(ByVal strData$, strPattern$) As String
@@ -235,7 +236,7 @@ Public Function regTest(ByVal strData$, strPattern$) As Boolean
     reg.IgnoreCase = True
     reg.MultiLine = True
     reg.Pattern = strPattern
-    regTest = reg.Test(strData)
+    regTest = reg.test(strData)
     Set reg = Nothing
 End Function
 '延时，单位为毫秒
@@ -252,6 +253,5 @@ Public Function isSetToDesktop() As Boolean
         isSetToDesktop = False
     Else
         isSetToDesktop = (GetSetting("WeNote", "Set", "SetToDesktop") = "1")
-        
     End If
 End Function
