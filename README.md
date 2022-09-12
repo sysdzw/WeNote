@@ -15,18 +15,20 @@
 
 4.设置窗口置顶。双击便签顶部打开设置，勾选“便签最前”。此项仅对当前便签有效。
 
-5.设置闹钟提醒。打开设置，设置倒计时，例如"5"、"分钟"。此项仅对当前便签有效。
+5.设置闹钟提醒。打开设置，设置倒计时，例如"5"、"分钟"。此项仅对当前便签有效，点击后面的日历图标可直接设置截止时间。
 
 6.设置开机启动。右击托盘图标选“设为开机自启动”，要取消可再次点击。此项全局生效。
 
-![](https://img-bbs.csdn.net/upload/202002/29/1582959769_345322.png)
+![image](https://user-images.githubusercontent.com/7876919/189725481-84df70a4-0a78-42d7-8c5a-9142e32fa5b3.png)
+![image](https://user-images.githubusercontent.com/7876919/189725218-248072ca-37c0-48b0-8497-f4b50eb1746e.png)
+![image](https://user-images.githubusercontent.com/7876919/189725271-87b9ac3c-56a1-4571-95c3-cebe103d1baf.png)
+![image](https://user-images.githubusercontent.com/7876919/189724942-35f37157-bf51-4abd-8232-4c47853d369d.png)
+![image](https://user-images.githubusercontent.com/7876919/189724179-ca8b3698-0bc8-4f68-b126-5d571c0415ed.png)
 
-![](https://img-bbs.csdn.net/upload/202002/29/1582960365_72148.png)
-
-![](https://img-bbs.csdn.net/upload/202002/29/1582960403_548149.png)
 
 
 **更新日志：**
+- 2022-09-13 v1.3 增加了可选择结束日期时间的功能
 - 2022-08-27 v1.2 增加了嵌入桌面的功能，右击右下角软件图标打开
 - 2020-03-15 v1.1 解决了倒计时更新时会闪动的小问题
 
