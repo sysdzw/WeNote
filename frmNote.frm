@@ -8,7 +8,7 @@ Begin VB.Form frmNote
    ClientHeight    =   3615
    ClientLeft      =   2130
    ClientTop       =   1785
-   ClientWidth     =   4425
+   ClientWidth     =   12120
    ControlBox      =   0   'False
    FillColor       =   &H00C0E0FF&
    ForeColor       =   &H00C0E0FF&
@@ -17,13 +17,231 @@ Begin VB.Form frmNote
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   3615
-   ScaleWidth      =   4425
+   ScaleWidth      =   12120
    ShowInTaskbar   =   0   'False
+   Begin VB.PictureBox picSetEndDatetime 
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000005&
+      ForeColor       =   &H80000008&
+      Height          =   2295
+      Left            =   7200
+      ScaleHeight     =   2265
+      ScaleWidth      =   3585
+      TabIndex        =   26
+      Top             =   600
+      Visible         =   0   'False
+      Width           =   3615
+      Begin VB.ComboBox cboS 
+         Appearance      =   0  'Flat
+         BeginProperty Font 
+            Name            =   "微软雅黑"
+            Size            =   10.5
+            Charset         =   134
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   420
+         Left            =   2640
+         TabIndex        =   35
+         Text            =   "30"
+         Top             =   787
+         Width           =   735
+      End
+      Begin VB.CommandButton cmdCancel 
+         Caption         =   "取消"
+         BeginProperty Font 
+            Name            =   "微软雅黑"
+            Size            =   10.5
+            Charset         =   134
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   375
+         Left            =   1920
+         TabIndex        =   33
+         Top             =   1560
+         Width           =   1095
+      End
+      Begin VB.CommandButton cmdSetDatetime 
+         Caption         =   "确定"
+         BeginProperty Font 
+            Name            =   "微软雅黑"
+            Size            =   10.5
+            Charset         =   134
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   375
+         Left            =   720
+         TabIndex        =   32
+         Top             =   1560
+         Width           =   1095
+      End
+      Begin VB.ComboBox cboN 
+         Appearance      =   0  'Flat
+         BeginProperty Font 
+            Name            =   "微软雅黑"
+            Size            =   10.5
+            Charset         =   134
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   420
+         Left            =   1680
+         TabIndex        =   29
+         Text            =   "30"
+         Top             =   787
+         Width           =   735
+      End
+      Begin VB.ComboBox cboH 
+         Appearance      =   0  'Flat
+         BeginProperty Font 
+            Name            =   "微软雅黑"
+            Size            =   10.5
+            Charset         =   134
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   420
+         Left            =   720
+         TabIndex        =   28
+         Text            =   "19"
+         Top             =   787
+         Width           =   735
+      End
+      Begin WeNote.ucDTPicker ucDTPicker1 
+         Height          =   375
+         Left            =   720
+         TabIndex        =   27
+         Top             =   240
+         Width           =   2655
+         _ExtentX        =   4683
+         _ExtentY        =   661
+         Value           =   44817
+         BackColor       =   -2147483643
+         ForeColor       =   4210752
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "微软雅黑"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+      End
+      Begin VB.Label Label6 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "提示：24小时制"
+         BeginProperty Font 
+            Name            =   "微软雅黑"
+            Size            =   9
+            Charset         =   134
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00404040&
+         Height          =   255
+         Left            =   720
+         TabIndex        =   37
+         Top             =   1200
+         Width           =   1290
+      End
+      Begin VB.Label Label5 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   ":"
+         BeginProperty Font 
+            Name            =   "微软雅黑"
+            Size            =   12
+            Charset         =   134
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   315
+         Left            =   2520
+         TabIndex        =   36
+         Top             =   840
+         Width           =   60
+      End
+      Begin VB.Label Label4 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   ":"
+         BeginProperty Font 
+            Name            =   "微软雅黑"
+            Size            =   12
+            Charset         =   134
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   315
+         Left            =   1560
+         TabIndex        =   34
+         Top             =   840
+         Width           =   60
+      End
+      Begin VB.Label Label3 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "日期:"
+         BeginProperty Font 
+            Name            =   "微软雅黑"
+            Size            =   12
+            Charset         =   134
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   315
+         Left            =   120
+         TabIndex        =   31
+         Top             =   240
+         Width           =   540
+      End
+      Begin VB.Label Label1 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "时间:"
+         BeginProperty Font 
+            Name            =   "微软雅黑"
+            Size            =   12
+            Charset         =   134
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   315
+         Left            =   120
+         TabIndex        =   30
+         Top             =   840
+         Width           =   540
+      End
+   End
    Begin VB.Timer Timer1 
       Enabled         =   0   'False
       Interval        =   1000
-      Left            =   8400
-      Top             =   1920
+      Left            =   2280
+      Top             =   3120
    End
    Begin VB.PictureBox picSet 
       Appearance      =   0  'Flat
@@ -93,7 +311,7 @@ Begin VB.Form frmNote
          List            =   "frmNote.frx":000E
          Style           =   2  'Dropdown List
          TabIndex        =   13
-         Top             =   2040
+         Top             =   2018
          Width           =   735
       End
       Begin VB.ComboBox Combo1 
@@ -113,7 +331,7 @@ Begin VB.Form frmNote
          List            =   "frmNote.frx":0012
          TabIndex        =   5
          Text            =   "5"
-         Top             =   2025
+         Top             =   2018
          Width           =   615
       End
       Begin VB.HScrollBar HScroll1 
@@ -165,6 +383,15 @@ Begin VB.Form frmNote
          TabIndex        =   6
          Top             =   2040
          Width           =   375
+      End
+      Begin VB.Image Image4 
+         Height          =   325
+         Left            =   2760
+         Picture         =   "frmNote.frx":0014
+         Stretch         =   -1  'True
+         ToolTipText     =   "点击直接设置结束日期时间"
+         Top             =   2043
+         Width           =   325
       End
       Begin VB.Label lblColor 
          BackStyle       =   0  'Transparent
@@ -455,7 +682,7 @@ Begin VB.Form frmNote
          Height          =   255
          Left            =   1965
          TabIndex        =   9
-         Top             =   2085
+         Top             =   2078
          Width           =   720
       End
    End
@@ -504,7 +731,7 @@ Begin VB.Form frmNote
       Height          =   90
       Left            =   3240
       MousePointer    =   8  'Size NW SE
-      Picture         =   "frmNote.frx":0014
+      Picture         =   "frmNote.frx":06BE
       Stretch         =   -1  'True
       Top             =   3120
       Width           =   90
@@ -601,29 +828,70 @@ Dim isShowEndTime As Boolean
 Dim isHasBeenLoaded As Boolean
 Dim isNeedRestoreFormSize As Boolean '如果设置窗口改变了窗口大小那么需要调整窗口大小
 
-Private Sub Form_Load()
+Private Sub cmdCancel_Click()
+    picSetEndDatetime.Visible = False
+End Sub
+
+Private Sub cmdSetDatetime_Click()
+    Dim d1 As Date, lngMin As Long, lngSec As Long
+    d1 = CDate(ucDTPicker1.Value & " " & cboH.Text & ":" & cboN.Text & ":" & cboS.Text)
+    lngMin = DateDiff("n", Now, d1)
+    lngSec = DateDiff("s", Now, d1)
+    If lngMin > 0 Then
+'        MsgBox lngMin & "分钟"
+        Combo1.Text = lngMin
+        Combo2.Text = "分钟"
+    Else
+'        MsgBox lngSec & "秒"
+        Combo1.Text = lngSec
+        Combo2.Text = "秒"
+    End If
     
+    picSetEndDatetime.Visible = False
+    
+    If Check3.Value = 0 Then
+        Check3.Value = 1
+    Else
+        Call Check3_Click
+    End If
+End Sub
+
+Private Sub Form_Load()
     If isNeedSetToDesktop Then SetParent Me.hWnd, lngHwndDesktop '根据需要设置是否嵌入桌面
     
     lblAdd.Move 135, 0
     lblClose.BackStyle = 0
     
-    Dim i%, vItem
+    Dim I%, vItem
     vItem = Split("1,3,5,10,15,20,25,30,45,60", ",")
-    For i = 0 To UBound(vItem)
-        Combo1.AddItem vItem(i)
+    For I = 0 To UBound(vItem)
+        Combo1.AddItem vItem(I)
     Next
     Combo1.Text = "25"
     setComboHeight Combo1, 300
     
     vItem = Split("秒,分钟,小时,天,月,年", ",")
-    For i = 0 To UBound(vItem)
-        Combo2.AddItem vItem(i)
+    For I = 0 To UBound(vItem)
+        Combo2.AddItem vItem(I)
     Next
     Combo2.Text = "分钟"
     
-    Dim w As New clsWindow
-    w.hWnd = Me.hWnd
+    '////////////初始化日期框///////////////////////
+    ucDTPicker1.Value = Date
+    For I = 0 To 23
+        cboH.AddItem Format(I, "00")
+    Next
+    For I = 0 To 59
+        cboN.AddItem Format(I, "00")
+        cboS.AddItem Format(I, "00")
+    Next
+    cboH.Text = Format(DatePart("h", Now), "00")
+    cboN.Text = Format(DatePart("n", Now), "00")
+    cboS.Text = Format(DatePart("s", Now), "00")
+    '/////////////////////////////////////////////
+    
+    Dim W As New clsWindow
+    W.hWnd = Me.hWnd
     
     picMain.BackColor = vbWhite
     
@@ -646,17 +914,17 @@ Private Sub Form_Load()
         imgLeftDown.Move 0, Me.ScaleHeight - imgRightDown.Height
         Me.BackColor = v(7) '先设置颜色
         
-        w.MakeTransparent 0 '防止闪动
+        W.MakeTransparent 0 '防止闪动
         Me.Show
         
-        w.FadeIn 50
+        W.FadeIn 50
         If v(6) <> 100 Then '如果指定透明度了的那么还要设置下
-            w.Transparent v(6)
+            W.Transparent v(6)
             HScroll1.Value = v(6)
         End If
         
         If v(8) = "是" Then
-            w.SetTop
+            W.SetTop
             Check1.Value = 1
         End If
         
@@ -710,12 +978,12 @@ Private Sub Form_Load()
         
         strNoteCreateDate = Now
         
-        w.MakeTransparent 0
+        W.MakeTransparent 0
         Me.Show
-        w.FadeIn 50
+        W.FadeIn 50
         
         HScroll1.Value = 90
-        w.Transparent HScroll1.Value
+        W.Transparent HScroll1.Value
     End If
     
     isHasBeenLoaded = True
@@ -797,6 +1065,12 @@ Private Sub Check3_Click()
     If Check3.Value = 1 Then '选中了就更新计时
         dateRemindStart = Format(Now, "yyyy-mm-dd hh:nn:ss") '只要改动了就要更新
         dblNumber = Combo1.Text
+        If dblNumber <= 0 Then
+            MsgBox "设置的数量必须是大于0的数！", vbExclamation
+            Combo1.Text = 25
+            Check3.Value = 0
+            Exit Sub
+        End If
         strDanwei = Combo2.Text
         
 '        dateRemindEnd = calcRemindDate()'小数无法计算，故弃用20200227
@@ -837,6 +1111,25 @@ Private Function calcRemindDate() As Date
     End If
     calcRemindDate = DateAdd(strInteval, dblNumber, CDate(dateRemindStart))
 End Function
+
+Private Sub Image4_Click()
+    picSetEndDatetime.Move picSet.Left - (picSetEndDatetime.Width - picSet.Width) / 2, picSet.Top + (picSet.Width - picSetEndDatetime.Height) / 2
+    
+    If Check3.Value = 0 Then
+        ucDTPicker1.Value = Now
+        cboH.Text = Format(DatePart("h", Now), "00")
+        cboN.Text = Format(DatePart("n", Now), "00")
+        cboS.Text = Format(DatePart("s", Now), "00")
+    Else
+        ucDTPicker1.Value = dateRemindEnd
+        cboH.Text = Format(DatePart("h", dateRemindEnd), "00")
+        cboN.Text = Format(DatePart("n", dateRemindEnd), "00")
+        cboS.Text = Format(DatePart("s", dateRemindEnd), "00")
+    End If
+    
+    picSetEndDatetime.Visible = True
+End Sub
+
 '通过tag来处理切换问题
 '点击时候如果tag是showEndTime，那么就设置为当前时间，如果不是那么就显示为
 Private Sub lblShengyu_Click()
@@ -908,30 +1201,30 @@ Private Sub lblClose_MouseUp(Button As Integer, Shift As Integer, X As Single, Y
             End If
         Next
         
-        Dim w As New clsWindow
-        w.hWnd = Me.hWnd
+        Dim W As New clsWindow
+        W.hWnd = Me.hWnd
         If lblClose.Tag = "" Then '由于是空的，也没有创建数据记录，所以不存在删除的问题,直接加快退出即可
-            w.FadeOut 40, True
+            W.FadeOut 40, True
             If lngNoteCount = 1 Then '表示当前是最后一个便签，那么退出所有程序
                 Call frmStartup.mnuExit_Click
             End If
         Else
             Dim isTop As Boolean
-            isTop = w.IsTopMost
-            If isTop Then w.SetPosNormal
+            isTop = W.IsTopMost
+            If isTop Then W.SetPosNormal
             If MsgBox("【删除便签】" & vbCrLf & vbCrLf & "您确定要删除此便签吗？删除将不可恢复。如果想隐藏便签可以右击右下角托盘图标选择对应菜单隐藏。", vbQuestion + vbYesNo) = vbYes Then
                 Dim strDataFromFile$
                 strDataFromFile = fileStr(strDataFile)
                 strDataFromFile = regReplace(strDataFromFile & vbCrLf, "^" & lblClose.Tag & vbTab & "[^\r\n]*" & vbCrLf, "") '删除掉数据
                 writeToFile strDataFile, strDataFromFile '写入数据文件
                 
-                w.FadeOut 30, True
+                W.FadeOut 30, True
                 
                 If lngNoteCount = 1 Then '表示当前是最后一个便签，那么退出所有程序
                     Call frmStartup.mnuExit_Click
                 End If
             End If
-            If isTop Then w.SetTop
+            If isTop Then W.SetTop
         End If
     End If
 End Sub
@@ -1007,16 +1300,16 @@ Private Sub Check1_Click()
         Exit Sub
     End If
     
-    Dim w As New clsWindow
-    w.hWnd = Me.hWnd
-    w.SetTop Check1.Value = 1
+    Dim W As New clsWindow
+    W.hWnd = Me.hWnd
+    W.SetTop Check1.Value = 1
     Call saveCurrentSet
 End Sub
 
 Private Sub HScroll1_Change()
-    Dim w As New clsWindow
-    w.hWnd = Me.hWnd
-    w.MakeTransparent HScroll1.Value
+    Dim W As New clsWindow
+    W.hWnd = Me.hWnd
+    W.MakeTransparent HScroll1.Value
     Call saveCurrentSet
 End Sub
 
@@ -1057,6 +1350,7 @@ Private Sub lblSetClose_Click()
     Call setControls
     
     picSet.Visible = False
+    picSetEndDatetime.Visible = False
 End Sub
 Private Sub picSet_DblClick()
     Call lblSetClose_Click
@@ -1068,10 +1362,10 @@ Private Sub Timer1_Timer()
         Check3.Value = 0
         Call saveCurrentSet '保存到数据文件
 
-        Dim w As New clsWindow
-        w.hWnd = Me.hWnd
-        w.Focus
-        w.Shake
+        Dim W As New clsWindow
+        W.hWnd = Me.hWnd
+        W.Focus
+        W.Shake
         MsgBox "您于" & dateRemindStart & "设置的“" & dblNumber & strDanwei & "”提醒时间已到！提醒内容：" & vbCrLf & vbCrLf & txtContent.Text & vbCrLf & vbCrLf & "当前时间：" & Now, vbInformation
     Else
         Dim strTip As String, strDaojishi$
@@ -1092,19 +1386,19 @@ Private Sub Timer1_Timer()
 End Sub
 '将秒数转换成年月日等时间
 Private Function transSecondsToAll(ByVal dblSeconds As Double) As String
-    Dim s$, i%, strTime$, dblCountCurrent As Double
+    Dim s$, I%, strTime$, dblCountCurrent As Double
     dblCountCurrent = Fix(dblSeconds / tDanwei(intDanweiIndex).lngSeconds)
     If dblCountCurrent > 0 Then strTime = dblCountCurrent & tDanwei(intDanweiIndex).strNameShow
-    i = intDanweiIndex - 1
-    Do While i > 0
-        dblSeconds = dblSeconds - dblCountCurrent * tDanwei(i + 1).lngSeconds
-        dblCountCurrent = Fix(dblSeconds / tDanwei(i).lngSeconds)
-        If dblCountCurrent > 0 Then strTime = strTime & dblCountCurrent & tDanwei(i).strNameShow
-        i = i - 1
+    I = intDanweiIndex - 1
+    Do While I > 0
+        dblSeconds = dblSeconds - dblCountCurrent * tDanwei(I + 1).lngSeconds
+        dblCountCurrent = Fix(dblSeconds / tDanwei(I).lngSeconds)
+        If dblCountCurrent > 0 Then strTime = strTime & dblCountCurrent & tDanwei(I).strNameShow
+        I = I - 1
     Loop
     If intDanweiIndex > 0 Then
         dblSeconds = dblSeconds - dblCountCurrent * tDanwei(1).lngSeconds
-        strTime = strTime & dblSeconds & tDanwei(i).strNameShow
+        strTime = strTime & dblSeconds & tDanwei(I).strNameShow
     End If
     transSecondsToAll = strTime
 End Function
