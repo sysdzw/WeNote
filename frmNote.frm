@@ -851,6 +851,7 @@ Private Const MIIM_STATE As Long = &H1
 Private Const MIIM_ID As Long = &H2
 Private Const MIIM_TYPE As Long = &H10
 Private Const MFT_STRING As Long = &H0
+Private Const MFT_SEPARATOR = &H800
 Private Const MFS_ENABLED As Long = &H0
 Private Const MFS_DISABLED As Long = &H3
 Private Const CF_UNICODETEXT As Long = 13
@@ -1449,11 +1450,15 @@ hPopupMenu = CreatePopupMenu()
 If hPopupMenu = 0 Then Exit Sub
 Dim i As Long
 Dim MII As MENUITEMINFO, Text As String
-For i = 1 To 4
+For i = 1 To 12
     MII.cbSize = LenB(MII)
     MII.fMask = MIIM_TYPE Or MIIM_ID Or MIIM_STATE
-    MII.fType = MFT_STRING
-    Text = VBA.Choose(i, "Cut", "Copy", "Paste", "Paste Special")
+    If i = 5 Or i = 9 Then
+        MII.fType = MFT_SEPARATOR
+    Else
+        MII.fType = MFT_STRING
+    End If
+    Text = VBA.Choose(i, "剪切", "复制", "粘贴", "无格式粘贴", "-", "粗体", "斜体", "下划线", "-", "标红", "标绿", "标蓝")
     MII.dwTypeData = StrPtr(Text)
     MII.cch = Len(Text)
     If i = 1 Or i = 2 Then
@@ -1492,6 +1497,19 @@ Select Case ID
         ElseIf VB.Clipboard.GetFormat(vbCFText) = True Then
             txtContent.PasteSpecial vbCFText
         End If
+    Case 6
+        txtContent.SelBold = Not txtContent.SelBold
+    Case 7
+        txtContent.sel.SelItalic = Not txtContent.SelItalic
+    Case 8
+        txtContent.SelUnderline = Not txtContent.SelUnderline
+    Case 10
+        txtContent.SelColor = vbRed
+    Case 11
+        txtContent.SelColor = vbGreen
+    Case 12
+        txtContent.SelColor = vbBlue
+        
 End Select
 End Sub
 
