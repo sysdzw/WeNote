@@ -19,13 +19,13 @@
 
 6.设置开机启动。右击托盘图标选“设为开机自启动”，要取消可再次点击。此项全局生效。
 
-![image](https://user-images.githubusercontent.com/7876919/189725481-84df70a4-0a78-42d7-8c5a-9142e32fa5b3.png)
-![image](https://user-images.githubusercontent.com/7876919/189725218-248072ca-37c0-48b0-8497-f4b50eb1746e.png)
-![image](https://user-images.githubusercontent.com/7876919/189725271-87b9ac3c-56a1-4571-95c3-cebe103d1baf.png)
-![image](https://user-images.githubusercontent.com/7876919/189724942-35f37157-bf51-4abd-8232-4c47853d369d.png)
-![image](https://user-images.githubusercontent.com/7876919/189724179-ca8b3698-0bc8-4f68-b126-5d571c0415ed.png)
-![image](https://user-images.githubusercontent.com/7876919/192630509-8de08214-b0bc-41fb-bd8d-78c9f0253c54.png)
-![image](https://user-images.githubusercontent.com/7876919/192630475-41f89df1-7cc0-4499-8fb8-401e66e7b20d.png)
+![image](https://user-images.githubusercontent.com/7876919/189725481-84df70a4-0a78-42d7-8c5a-9142e32fa5b3.png)<br>
+![image](https://user-images.githubusercontent.com/7876919/189725218-248072ca-37c0-48b0-8497-f4b50eb1746e.png)<br>
+![image](https://user-images.githubusercontent.com/7876919/189725271-87b9ac3c-56a1-4571-95c3-cebe103d1baf.png)<br>
+![image](https://user-images.githubusercontent.com/7876919/189724942-35f37157-bf51-4abd-8232-4c47853d369d.png)<br>
+![image](https://user-images.githubusercontent.com/7876919/189724179-ca8b3698-0bc8-4f68-b126-5d571c0415ed.png)<br>
+![image](https://user-images.githubusercontent.com/7876919/192630509-8de08214-b0bc-41fb-bd8d-78c9f0253c54.png)<br>
+![image](https://user-images.githubusercontent.com/7876919/192630475-41f89df1-7cc0-4499-8fb8-401e66e7b20d.png)<br>
 
 
 
