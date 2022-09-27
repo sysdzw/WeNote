@@ -27,7 +27,7 @@ Begin VB.Form frmNote
       Left            =   7200
       ScaleHeight     =   2265
       ScaleWidth      =   3585
-      TabIndex        =   26
+      TabIndex        =   25
       Top             =   600
       Visible         =   0   'False
       Width           =   3615
@@ -44,7 +44,7 @@ Begin VB.Form frmNote
          EndProperty
          Height          =   420
          Left            =   2640
-         TabIndex        =   35
+         TabIndex        =   34
          Text            =   "30"
          Top             =   787
          Width           =   735
@@ -62,7 +62,7 @@ Begin VB.Form frmNote
          EndProperty
          Height          =   375
          Left            =   1920
-         TabIndex        =   33
+         TabIndex        =   32
          Top             =   1560
          Width           =   1095
       End
@@ -79,7 +79,7 @@ Begin VB.Form frmNote
          EndProperty
          Height          =   375
          Left            =   720
-         TabIndex        =   32
+         TabIndex        =   31
          Top             =   1560
          Width           =   1095
       End
@@ -96,7 +96,7 @@ Begin VB.Form frmNote
          EndProperty
          Height          =   420
          Left            =   1680
-         TabIndex        =   29
+         TabIndex        =   28
          Text            =   "30"
          Top             =   787
          Width           =   735
@@ -114,7 +114,7 @@ Begin VB.Form frmNote
          EndProperty
          Height          =   420
          Left            =   720
-         TabIndex        =   28
+         TabIndex        =   27
          Text            =   "19"
          Top             =   787
          Width           =   735
@@ -122,7 +122,7 @@ Begin VB.Form frmNote
       Begin WeNote.ucDTPicker ucDTPicker1 
          Height          =   375
          Left            =   720
-         TabIndex        =   27
+         TabIndex        =   26
          Top             =   240
          Width           =   2655
          _ExtentX        =   4683
@@ -156,7 +156,7 @@ Begin VB.Form frmNote
          ForeColor       =   &H00404040&
          Height          =   255
          Left            =   720
-         TabIndex        =   37
+         TabIndex        =   36
          Top             =   1200
          Width           =   1290
       End
@@ -175,7 +175,7 @@ Begin VB.Form frmNote
          EndProperty
          Height          =   315
          Left            =   2520
-         TabIndex        =   36
+         TabIndex        =   35
          Top             =   840
          Width           =   60
       End
@@ -194,7 +194,7 @@ Begin VB.Form frmNote
          EndProperty
          Height          =   315
          Left            =   1560
-         TabIndex        =   34
+         TabIndex        =   33
          Top             =   840
          Width           =   60
       End
@@ -213,7 +213,7 @@ Begin VB.Form frmNote
          EndProperty
          Height          =   315
          Left            =   120
-         TabIndex        =   31
+         TabIndex        =   30
          Top             =   240
          Width           =   540
       End
@@ -232,7 +232,7 @@ Begin VB.Form frmNote
          EndProperty
          Height          =   315
          Left            =   120
-         TabIndex        =   30
+         TabIndex        =   29
          Top             =   840
          Width           =   540
       End
@@ -252,7 +252,7 @@ Begin VB.Form frmNote
       Left            =   3600
       ScaleHeight     =   3105
       ScaleWidth      =   3225
-      TabIndex        =   4
+      TabIndex        =   3
       Top             =   360
       Visible         =   0   'False
       Width           =   3255
@@ -275,7 +275,7 @@ Begin VB.Form frmNote
          Left            =   240
          ScaleHeight     =   255
          ScaleWidth      =   2775
-         TabIndex        =   25
+         TabIndex        =   24
          Top             =   2760
          Width           =   2775
       End
@@ -289,7 +289,7 @@ Begin VB.Form frmNote
          Left            =   240
          ScaleHeight     =   105
          ScaleWidth      =   1095
-         TabIndex        =   24
+         TabIndex        =   23
          Top             =   2640
          Visible         =   0   'False
          Width           =   1095
@@ -310,7 +310,7 @@ Begin VB.Form frmNote
          Left            =   1200
          List            =   "frmNote.frx":000E
          Style           =   2  'Dropdown List
-         TabIndex        =   13
+         TabIndex        =   12
          Top             =   2018
          Width           =   735
       End
@@ -329,7 +329,7 @@ Begin VB.Form frmNote
          ItemData        =   "frmNote.frx":0010
          Left            =   525
          List            =   "frmNote.frx":0012
-         TabIndex        =   5
+         TabIndex        =   4
          Text            =   "5"
          Top             =   2018
          Width           =   615
@@ -340,7 +340,7 @@ Begin VB.Form frmNote
          Left            =   240
          Max             =   100
          Min             =   20
-         TabIndex        =   8
+         TabIndex        =   7
          Top             =   765
          Value           =   90
          Width           =   2775
@@ -361,7 +361,7 @@ Begin VB.Form frmNote
          ForeColor       =   &H00404040&
          Height          =   330
          Left            =   240
-         TabIndex        =   7
+         TabIndex        =   6
          Top             =   1605
          Width           =   2655
       End
@@ -380,7 +380,7 @@ Begin VB.Form frmNote
          ForeColor       =   &H00404040&
          Height          =   330
          Left            =   240
-         TabIndex        =   6
+         TabIndex        =   5
          Top             =   2040
          Width           =   375
       End
@@ -398,7 +398,7 @@ Begin VB.Form frmNote
          Height          =   135
          Index           =   6
          Left            =   2400
-         TabIndex        =   23
+         TabIndex        =   22
          Top             =   1365
          Width           =   135
       End
@@ -407,7 +407,7 @@ Begin VB.Form frmNote
          Height          =   135
          Index           =   5
          Left            =   2040
-         TabIndex        =   22
+         TabIndex        =   21
          Top             =   1365
          Width           =   135
       End
@@ -416,7 +416,7 @@ Begin VB.Form frmNote
          Height          =   135
          Index           =   4
          Left            =   1680
-         TabIndex        =   21
+         TabIndex        =   20
          Top             =   1365
          Width           =   135
       End
@@ -425,7 +425,7 @@ Begin VB.Form frmNote
          Height          =   135
          Index           =   3
          Left            =   1320
-         TabIndex        =   20
+         TabIndex        =   19
          Top             =   1365
          Width           =   135
       End
@@ -434,7 +434,7 @@ Begin VB.Form frmNote
          Height          =   135
          Index           =   2
          Left            =   960
-         TabIndex        =   19
+         TabIndex        =   18
          Top             =   1365
          Width           =   135
       End
@@ -443,7 +443,7 @@ Begin VB.Form frmNote
          Height          =   135
          Index           =   1
          Left            =   600
-         TabIndex        =   18
+         TabIndex        =   17
          Top             =   1365
          Width           =   135
       End
@@ -452,7 +452,7 @@ Begin VB.Form frmNote
          Height          =   135
          Index           =   0
          Left            =   240
-         TabIndex        =   17
+         TabIndex        =   16
          Top             =   1365
          Width           =   135
       End
@@ -472,7 +472,7 @@ Begin VB.Form frmNote
          ForeColor       =   &H00404040&
          Height          =   240
          Left            =   2760
-         TabIndex        =   16
+         TabIndex        =   15
          Top             =   1312
          Width           =   300
       End
@@ -569,7 +569,7 @@ Begin VB.Form frmNote
          ForeColor       =   &H00404040&
          Height          =   255
          Left            =   240
-         TabIndex        =   15
+         TabIndex        =   14
          Top             =   1080
          Width           =   360
       End
@@ -589,7 +589,7 @@ Begin VB.Form frmNote
          ForeColor       =   &H00404040&
          Height          =   240
          Left            =   2400
-         TabIndex        =   14
+         TabIndex        =   13
          Top             =   2400
          Visible         =   0   'False
          Width           =   300
@@ -618,7 +618,7 @@ Begin VB.Form frmNote
          ForeColor       =   &H00404040&
          Height          =   255
          Left            =   240
-         TabIndex        =   12
+         TabIndex        =   11
          Top             =   480
          Width           =   540
       End
@@ -640,7 +640,7 @@ Begin VB.Form frmNote
          ForeColor       =   &H00808080&
          Height          =   330
          Left            =   2520
-         TabIndex        =   11
+         TabIndex        =   10
          ToolTipText     =   "关闭"
          Top             =   0
          Width           =   195
@@ -661,7 +661,7 @@ Begin VB.Form frmNote
          ForeColor       =   &H00404040&
          Height          =   285
          Left            =   1320
-         TabIndex        =   10
+         TabIndex        =   9
          Top             =   45
          Width           =   480
       End
@@ -681,14 +681,14 @@ Begin VB.Form frmNote
          ForeColor       =   &H00404040&
          Height          =   255
          Left            =   1965
-         TabIndex        =   9
+         TabIndex        =   8
          Top             =   2078
          Width           =   720
       End
    End
    Begin VB.PictureBox picMain 
       AutoRedraw      =   -1  'True
-      BackColor       =   &H00FFFFFF&
+      BackColor       =   &H00E0E0E0&
       BorderStyle     =   0  'None
       Height          =   2655
       Left            =   120
@@ -697,24 +697,28 @@ Begin VB.Form frmNote
       TabIndex        =   0
       Top             =   360
       Width           =   3255
-      Begin VB.TextBox txtContent 
-         Appearance      =   0  'Flat
-         BorderStyle     =   0  'None
-         BeginProperty Font 
+      Begin WeNote.RichTextBox txtContent 
+         Height          =   2175
+         Left            =   240
+         TabIndex        =   37
+         Top             =   240
+         Width           =   2775
+         _ExtentX        =   4895
+         _ExtentY        =   3836
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "微软雅黑"
-            Size            =   12
+            Size            =   10.5
             Charset         =   134
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   1935
-         Left            =   240
+         BorderStyle     =   0
+         HideSelection   =   0   'False
          MultiLine       =   -1  'True
-         TabIndex        =   3
-         Top             =   240
-         Width           =   2775
+         ScrollBars      =   3
+         TextRTF         =   "frmNote.frx":06BE
       End
    End
    Begin VB.Image imgLeftDown 
@@ -731,7 +735,7 @@ Begin VB.Form frmNote
       Height          =   90
       Left            =   3240
       MousePointer    =   8  'Size NW SE
-      Picture         =   "frmNote.frx":06BE
+      Picture         =   "frmNote.frx":088E
       Stretch         =   -1  'True
       Top             =   3120
       Width           =   90
@@ -813,7 +817,7 @@ Dim isMovingRightDown As Boolean, x1RightDown As Integer, y1RightDown As Integer
 Dim isMovingLeftDown As Boolean, x1LeftDown As Integer, y1LeftDown As Integer
 Dim orgWidth&, orgHeight&
 
-'提醒用
+'////////////////提醒用
 Dim isRemind As Boolean
 Dim dateRemindStart As Date
 Dim dblNumber As Double
@@ -828,6 +832,31 @@ Dim isShowEndTime As Boolean
 Dim isHasBeenLoaded As Boolean
 Dim isNeedRestoreFormSize As Boolean '如果设置窗口改变了窗口大小那么需要调整窗口大小
 
+'////////////richtextbox用的
+Private Type MENUITEMINFO
+    cbSize As Long
+    fMask As Long
+    fType As Long
+    fState As Long
+    wID As Long
+    hSubMenu As Long
+    hBmpChecked As Long
+    hBmpUnchecked As Long
+    dwItemData As Long
+    dwTypeData As Long
+    cch As Long
+    hBmpItem As Long
+End Type
+Private Const MIIM_STATE As Long = &H1
+Private Const MIIM_ID As Long = &H2
+Private Const MIIM_TYPE As Long = &H10
+Private Const MFT_STRING As Long = &H0
+Private Const MFS_ENABLED As Long = &H0
+Private Const MFS_DISABLED As Long = &H3
+Private Const CF_UNICODETEXT As Long = 13
+Private Declare Function CreatePopupMenu Lib "user32" () As Long
+Private Declare Function InsertMenuItem Lib "user32" Alias "InsertMenuItemW" (ByVal hMenu As Long, ByVal uItem As Long, ByVal fByPosition As Long, ByRef lpmii As MENUITEMINFO) As Long
+'//////////////////////
 Private Sub cmdCancel_Click()
     picSetEndDatetime.Visible = False
 End Sub
@@ -862,36 +891,36 @@ Private Sub Form_Load()
     lblAdd.Move 135, 0
     lblClose.BackStyle = 0
     
-    Dim I%, vItem
+    Dim i%, vItem
     vItem = Split("1,3,5,10,15,20,25,30,45,60", ",")
-    For I = 0 To UBound(vItem)
-        Combo1.AddItem vItem(I)
+    For i = 0 To UBound(vItem)
+        Combo1.AddItem vItem(i)
     Next
     Combo1.Text = "25"
     setComboHeight Combo1, 300
     
     vItem = Split("秒,分钟,小时,天,月,年", ",")
-    For I = 0 To UBound(vItem)
-        Combo2.AddItem vItem(I)
+    For i = 0 To UBound(vItem)
+        Combo2.AddItem vItem(i)
     Next
     Combo2.Text = "分钟"
     
     '////////////初始化日期框///////////////////////
     ucDTPicker1.Value = Date
-    For I = 0 To 23
-        cboH.AddItem Format(I, "00")
+    For i = 0 To 23
+        cboH.AddItem Format(i, "00")
     Next
-    For I = 0 To 59
-        cboN.AddItem Format(I, "00")
-        cboS.AddItem Format(I, "00")
+    For i = 0 To 59
+        cboN.AddItem Format(i, "00")
+        cboS.AddItem Format(i, "00")
     Next
     cboH.Text = Format(DatePart("h", Now), "00")
     cboN.Text = Format(DatePart("n", Now), "00")
     cboS.Text = Format(DatePart("s", Now), "00")
     '/////////////////////////////////////////////
     
-    Dim W As New clsWindow
-    W.hWnd = Me.hWnd
+    Dim w As New clsWindow
+    w.hWnd = Me.hWnd
     
     picMain.BackColor = vbWhite
     
@@ -914,17 +943,17 @@ Private Sub Form_Load()
         imgLeftDown.Move 0, Me.ScaleHeight - imgRightDown.Height
         Me.BackColor = v(7) '先设置颜色
         
-        W.MakeTransparent 0 '防止闪动
+        w.MakeTransparent 0 '防止闪动
         Me.Show
         
-        W.FadeIn 50
+        w.FadeIn 50
         If v(6) <> 100 Then '如果指定透明度了的那么还要设置下
-            W.Transparent v(6)
+            w.Transparent v(6)
             HScroll1.Value = v(6)
         End If
         
         If v(8) = "是" Then
-            W.SetTop
+            w.SetTop
             Check1.Value = 1
         End If
         
@@ -978,12 +1007,12 @@ Private Sub Form_Load()
         
         strNoteCreateDate = Now
         
-        W.MakeTransparent 0
+        w.MakeTransparent 0
         Me.Show
-        W.FadeIn 50
+        w.FadeIn 50
         
         HScroll1.Value = 90
-        W.Transparent HScroll1.Value
+        w.Transparent HScroll1.Value
     End If
     
     isHasBeenLoaded = True
@@ -1155,15 +1184,15 @@ Private Sub lblMore_Click()
     Dim cc As ChooseColor
     
     cc.lStructSize = Len(cc)
-    cc.hwndOwner = Me.hWnd
+    cc.hWndOwner = Me.hWnd
     cc.hInstance = App.hInstance
-    cc.flags = 0
+    cc.Flags = 0
     cc.lpCustColors = String$(16 * 4, 0)
     
     rtn = ChooseColor(cc)
     
     If rtn >= 1 Then
-        Me.BackColor = cc.rgbResult
+        Me.BackColor = cc.RGBResult
         Call saveCurrentSet
     End If
 End Sub
@@ -1201,30 +1230,30 @@ Private Sub lblClose_MouseUp(Button As Integer, Shift As Integer, X As Single, Y
             End If
         Next
         
-        Dim W As New clsWindow
-        W.hWnd = Me.hWnd
+        Dim w As New clsWindow
+        w.hWnd = Me.hWnd
         If lblClose.Tag = "" Then '由于是空的，也没有创建数据记录，所以不存在删除的问题,直接加快退出即可
-            W.FadeOut 40, True
+            w.FadeOut 40, True
             If lngNoteCount = 1 Then '表示当前是最后一个便签，那么退出所有程序
                 Call frmStartup.mnuExit_Click
             End If
         Else
             Dim isTop As Boolean
-            isTop = W.IsTopMost
-            If isTop Then W.SetPosNormal
+            isTop = w.IsTopMost
+            If isTop Then w.SetPosNormal
             If MsgBox("【删除便签】" & vbCrLf & vbCrLf & "您确定要删除此便签吗？删除将不可恢复。如果想隐藏便签可以右击右下角托盘图标选择对应菜单隐藏。", vbQuestion + vbYesNo) = vbYes Then
                 Dim strDataFromFile$
                 strDataFromFile = fileStr(strDataFile)
                 strDataFromFile = regReplace(strDataFromFile & vbCrLf, "^" & lblClose.Tag & vbTab & "[^\r\n]*" & vbCrLf, "") '删除掉数据
                 writeToFile strDataFile, strDataFromFile '写入数据文件
                 
-                W.FadeOut 30, True
+                w.FadeOut 30, True
                 
                 If lngNoteCount = 1 Then '表示当前是最后一个便签，那么退出所有程序
                     Call frmStartup.mnuExit_Click
                 End If
             End If
-            If isTop Then W.SetTop
+            If isTop Then w.SetTop
         End If
     End If
 End Sub
@@ -1300,16 +1329,16 @@ Private Sub Check1_Click()
         Exit Sub
     End If
     
-    Dim W As New clsWindow
-    W.hWnd = Me.hWnd
-    W.SetTop Check1.Value = 1
+    Dim w As New clsWindow
+    w.hWnd = Me.hWnd
+    w.SetTop Check1.Value = 1
     Call saveCurrentSet
 End Sub
 
 Private Sub HScroll1_Change()
-    Dim W As New clsWindow
-    W.hWnd = Me.hWnd
-    W.MakeTransparent HScroll1.Value
+    Dim w As New clsWindow
+    w.hWnd = Me.hWnd
+    w.MakeTransparent HScroll1.Value
     Call saveCurrentSet
 End Sub
 
@@ -1362,10 +1391,10 @@ Private Sub Timer1_Timer()
         Check3.Value = 0
         Call saveCurrentSet '保存到数据文件
 
-        Dim W As New clsWindow
-        W.hWnd = Me.hWnd
-        W.Focus
-        W.Shake
+        Dim w As New clsWindow
+        w.hWnd = Me.hWnd
+        w.Focus
+        w.Shake
         MsgBox "您于" & dateRemindStart & "设置的“" & dblNumber & strDanwei & "”提醒时间已到！提醒内容：" & vbCrLf & vbCrLf & txtContent.Text & vbCrLf & vbCrLf & "当前时间：" & Now, vbInformation
     Else
         Dim strTip As String, strDaojishi$
@@ -1386,19 +1415,19 @@ Private Sub Timer1_Timer()
 End Sub
 '将秒数转换成年月日等时间
 Private Function transSecondsToAll(ByVal dblSeconds As Double) As String
-    Dim s$, I%, strTime$, dblCountCurrent As Double
+    Dim s$, i%, strTime$, dblCountCurrent As Double
     dblCountCurrent = Fix(dblSeconds / tDanwei(intDanweiIndex).lngSeconds)
     If dblCountCurrent > 0 Then strTime = dblCountCurrent & tDanwei(intDanweiIndex).strNameShow
-    I = intDanweiIndex - 1
-    Do While I > 0
-        dblSeconds = dblSeconds - dblCountCurrent * tDanwei(I + 1).lngSeconds
-        dblCountCurrent = Fix(dblSeconds / tDanwei(I).lngSeconds)
-        If dblCountCurrent > 0 Then strTime = strTime & dblCountCurrent & tDanwei(I).strNameShow
-        I = I - 1
+    i = intDanweiIndex - 1
+    Do While i > 0
+        dblSeconds = dblSeconds - dblCountCurrent * tDanwei(i + 1).lngSeconds
+        dblCountCurrent = Fix(dblSeconds / tDanwei(i).lngSeconds)
+        If dblCountCurrent > 0 Then strTime = strTime & dblCountCurrent & tDanwei(i).strNameShow
+        i = i - 1
     Loop
     If intDanweiIndex > 0 Then
         dblSeconds = dblSeconds - dblCountCurrent * tDanwei(1).lngSeconds
-        strTime = strTime & dblSeconds & tDanwei(I).strNameShow
+        strTime = strTime & dblSeconds & tDanwei(i).strNameShow
     End If
     transSecondsToAll = strTime
 End Function
@@ -1413,3 +1442,56 @@ Private Sub printDaojishi(ByVal strMsg As String)
     lblShengyu.Cls
     lblShengyu.Print strMsg
 End Sub
+
+Private Sub txtContent_OLEGetContextMenu(ByVal SelType As Integer, ByVal LpOleObject As Long, ByVal SelStart As Long, ByVal SelEnd As Long, hMenu As Long)
+Dim hPopupMenu As Long
+hPopupMenu = CreatePopupMenu()
+If hPopupMenu = 0 Then Exit Sub
+Dim i As Long
+Dim MII As MENUITEMINFO, Text As String
+For i = 1 To 4
+    MII.cbSize = LenB(MII)
+    MII.fMask = MIIM_TYPE Or MIIM_ID Or MIIM_STATE
+    MII.fType = MFT_STRING
+    Text = VBA.Choose(i, "Cut", "Copy", "Paste", "Paste Special")
+    MII.dwTypeData = StrPtr(Text)
+    MII.cch = Len(Text)
+    If i = 1 Or i = 2 Then
+        If SelType <> 0 Then
+            MII.fState = MFS_ENABLED
+        Else
+            MII.fState = MFS_DISABLED
+        End If
+    ElseIf i = 3 Or i = 4 Then
+        If txtContent.CanPaste = True Then
+            MII.fState = MFS_ENABLED
+        Else
+            MII.fState = MFS_DISABLED
+        End If
+    Else
+        MII.fState = MFS_ENABLED
+    End If
+    MII.wID = i
+    InsertMenuItem hPopupMenu, 0, 0, MII
+Next i
+hMenu = hPopupMenu
+' The client should not destroy the menu as this will be done automatically by the rich text box control.
+End Sub
+
+Private Sub txtContent_OLEContextMenuClick(ByVal ID As Long)
+Select Case ID
+    Case 1
+        txtContent.Cut
+    Case 2
+        txtContent.Copy
+    Case 3
+        txtContent.Paste
+    Case 4
+        If VB.Clipboard.GetFormat(CF_UNICODETEXT) = True Then
+            txtContent.PasteSpecial CF_UNICODETEXT
+        ElseIf VB.Clipboard.GetFormat(vbCFText) = True Then
+            txtContent.PasteSpecial vbCFText
+        End If
+End Select
+End Sub
+
