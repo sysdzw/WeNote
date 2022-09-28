@@ -276,6 +276,7 @@ Begin VB.Form frmNote
          ScaleHeight     =   255
          ScaleWidth      =   2775
          TabIndex        =   24
+         ToolTipText     =   "点击这里可以切换显示截止日期哦"
          Top             =   2760
          Width           =   2775
       End
@@ -1249,7 +1250,8 @@ Private Sub lblClose_MouseUp(Button As Integer, Shift As Integer, X As Single, Y
             If MsgBox("【删除便签】" & vbCrLf & vbCrLf & "您确定要删除此便签吗？删除将不可恢复。如果想隐藏便签可以右击右下角托盘图标选择对应菜单隐藏。", vbQuestion + vbYesNo) = vbYes Then
                 Dim strDataFromFile$
                 strDataFromFile = fileStr(strDataFile)
-                strDataFromFile = regReplace(strDataFromFile & vbCrLf, "^" & lblClose.Tag & vbTab & "[^\r\n]*" & vbCrLf, "") '删除掉数据
+                strDataFromFile = regReplace(strDataFromFile, "^" & lblClose.Tag & "\t[^\r\n]*", "")   '删除掉数据
+                strDataFromFile = regReplace(strDataFromFile, "[\r\n]+", vbCrLf) '将多余连续的0D、0A全部替换为回车，更保险，因为有的时候不知道为什么连续出现两个vbcr vbcr
                 writeToFile strDataFile, strDataFromFile '写入数据文件
                 
                 w.FadeOut 30, True
