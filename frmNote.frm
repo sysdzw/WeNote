@@ -932,6 +932,7 @@ Private Sub Form_Load()
         Dim v
         v = Split(Me.Tag, vbTab)
         lblClose.Tag = v(0)  'id值保存在关闭按钮的tag属性里
+'        txtContent.Text = Replace(v(5), "vbcrlf", vbCrLf)
         txtContent.Text = Replace(v(5), "vbcrlf", vbCrLf)
         
         If Screen.Width - Val(v(1)) < 15 Then v(1) = Screen.Width - v(3) - 150 '左坐标至少留出1像素，如果是0或者是负数，那么表示不可见，这种情况可能是大屏到小屏上了，例如1920到1440电脑上去了。
@@ -1351,13 +1352,15 @@ End Sub
 Private Sub saveCurrentSet()
     If Not isHasBeenLoaded Then Exit Sub '窗体未载入初始化好就不执行保存
     
-    Dim strData$, strDataFromFile$
+    Dim strData$, strDataFromFile$, strSaveContent$
     If lblClose.Tag = "" Then
         lngCurrentIndex = lngCurrentIndex + 1
         lblClose.Tag = lngCurrentIndex
     End If
+    strSaveContent = Replace(Replace(txtContent.TextRTF, Chr(0), ""), vbCrLf, "vbcrlf")
+    
     strData = lblClose.Tag & vbTab & Me.Left & vbTab & Me.Top & vbTab & Me.Width & vbTab & Me.Height & vbTab & _
-                Replace(txtContent.Text, vbCrLf, "vbcrlf") & vbTab & _
+                strSaveContent & vbTab & _
                 HScroll1.Value & vbTab & _
                 Me.BackColor & vbTab & _
                 IIf(Check1.Value = 1, "是", "否") & vbTab & _
@@ -1500,7 +1503,7 @@ Select Case ID
     Case 6
         txtContent.SelBold = Not txtContent.SelBold
     Case 7
-        txtContent.sel.SelItalic = Not txtContent.SelItalic
+        txtContent.SelItalic = Not txtContent.SelItalic
     Case 8
         txtContent.SelUnderline = Not txtContent.SelUnderline
     Case 10
