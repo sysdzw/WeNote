@@ -932,8 +932,11 @@ Private Sub Form_Load()
         Dim v
         v = Split(Me.Tag, vbTab)
         lblClose.Tag = v(0)  'id值保存在关闭按钮的tag属性里
-'        txtContent.Text = Replace(v(5), "vbcrlf", vbCrLf)
-        txtContent.Text = Replace(v(5), "vbcrlf", vbCrLf)
+        If InStr(v(5), "{\rtf1\") > 0 Then '如果是rtf格式的要
+            txtContent.TextRTF = Replace(v(5), "vbcrlf", vbCrLf)
+        Else
+            txtContent.Text = Replace(v(5), "vbcrlf", vbCrLf)
+        End If
         
         If Screen.Width - Val(v(1)) < 15 Then v(1) = Screen.Width - v(3) - 150 '左坐标至少留出1像素，如果是0或者是负数，那么表示不可见，这种情况可能是大屏到小屏上了，例如1920到1440电脑上去了。
         If Screen.Height - Val(v(2)) < 600 Then v(2) = Screen.Height - v(4) - 600 '上坐标至少留出45像素，因为任务栏普通28像素，大图标44像素
