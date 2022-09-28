@@ -717,7 +717,7 @@ Begin VB.Form frmNote
          BorderStyle     =   0
          HideSelection   =   0   'False
          MultiLine       =   -1  'True
-         ScrollBars      =   3
+         ScrollBars      =   2
          TextRTF         =   "frmNote.frx":06BE
       End
    End
