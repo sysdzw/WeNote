@@ -10,7 +10,8 @@
 **开发背景：**
 
 写这个软件主要是因为无法忍受win7自带那个便笺，不能设置提醒，不能置顶，不能设置透明度，最忍无可忍的是非要占用一个任务栏，本来底部任务栏就不够用了。于是用vb写了个这么小软件自己用，起名为“微便签”，这些天用起来感觉挺方便，于是share给大家用用，软件免费共享无广告。 项目里的窗口淡入淡出等效果用到了clswindow 2.2框架。关于clswindow的介绍可以参考：https://www.kancloud.cn/sysdzw/clswindow/1492595
- **源码编译运行注意** 要先将Richtextbox\OLEGuids\OLEGuids.tlb和OLEGuids.odl复制到C:\Windows\SysWOW64下面。
+
+**源码编译运行注意** 要先将Richtextbox\OLEGuids\OLEGuids.tlb和OLEGuids.odl复制到C:\Windows\SysWOW64下面。
 
 **使用方法：**
 
