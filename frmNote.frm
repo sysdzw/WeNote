@@ -708,7 +708,7 @@ Begin VB.Form frmNote
          _ExtentY        =   3836
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "微软雅黑"
-            Size            =   10.5
+            Size            =   11.25
             Charset         =   134
             Weight          =   400
             Underline       =   0   'False
@@ -1458,15 +1458,15 @@ hPopupMenu = CreatePopupMenu()
 If hPopupMenu = 0 Then Exit Sub
 Dim i As Long
 Dim MII As MENUITEMINFO, Text As String
-For i = 1 To 12
+For i = 1 To 19
     MII.cbSize = LenB(MII)
     MII.fMask = MIIM_TYPE Or MIIM_ID Or MIIM_STATE
-    If i = 5 Or i = 9 Then
+    If i = 5 Or i = 7 Or i = 11 Or i = 16 Then '设置文字还是间隔线
         MII.fType = MFT_SEPARATOR
     Else
         MII.fType = MFT_STRING
     End If
-    Text = VBA.Choose(i, "剪切", "复制", "粘贴", "无格式粘贴", "-", "粗体", "斜体", "下划线", "-", "标红", "标绿", "标蓝")
+    Text = VBA.Choose(i, "剪切", "复制", "粘贴", "无格式粘贴", "-", "全选", "-", "粗体", "斜体", "下划线", "-", "标红", "标绿", "标蓝", "标黑", "-", "放大", "缩小", "标准")
     MII.dwTypeData = StrPtr(Text)
     MII.cch = Len(Text)
     If i = 1 Or i = 2 Then
@@ -1492,32 +1492,49 @@ hMenu = hPopupMenu
 End Sub
 
 Private Sub txtContent_OLEContextMenuClick(ByVal ID As Long)
-Select Case ID
-    Case 1
-        txtContent.Cut
-    Case 2
-        txtContent.Copy
-    Case 3
-        txtContent.Paste
-    Case 4
-        If VB.Clipboard.GetFormat(CF_UNICODETEXT) = True Then
-            txtContent.PasteSpecial CF_UNICODETEXT
-        ElseIf VB.Clipboard.GetFormat(vbCFText) = True Then
-            txtContent.PasteSpecial vbCFText
-        End If
-    Case 6
-        txtContent.SelBold = Not txtContent.SelBold
-    Case 7
-        txtContent.SelItalic = Not txtContent.SelItalic
-    Case 8
-        txtContent.SelUnderline = Not txtContent.SelUnderline
-    Case 10
-        txtContent.SelColor = vbRed
-    Case 11
-        txtContent.SelColor = vbGreen
-    Case 12
-        txtContent.SelColor = vbBlue
-        
-End Select
+    Select Case ID
+        Case 1
+            txtContent.Cut
+        Case 2
+            txtContent.Copy
+        Case 3
+            txtContent.Paste
+        Case 4
+            If VB.Clipboard.GetFormat(CF_UNICODETEXT) = True Then
+                txtContent.PasteSpecial CF_UNICODETEXT
+            ElseIf VB.Clipboard.GetFormat(vbCFText) = True Then
+                txtContent.PasteSpecial vbCFText
+            End If
+        Case 6
+            txtContent.SelStart = 0
+            txtContent.SelLength = Len(txtContent.Text)
+        Case 8
+            txtContent.SelBold = Not txtContent.SelBold
+        Case 9
+            txtContent.SelItalic = Not txtContent.SelItalic
+        Case 10
+            txtContent.SelUnderline = Not txtContent.SelUnderline
+        Case 12
+            txtContent.SelColor = vbRed
+        Case 13
+            txtContent.SelColor = vbGreen
+        Case 14
+            txtContent.SelColor = vbBlue
+        Case 15
+            txtContent.SelColor = vbBlack
+'        Case 17
+'            txtContent.Font.Size = txtContent.Font.Size + 1
+'        Case 18
+'            txtContent.Font.Size = txtContent.Font.Size - 1
+'        Case 19
+'            txtContent.Font.Size = 11
+        Case 17
+            txtContent.SelFontSize = txtContent.SelFontSize + 1
+        Case 18
+            txtContent.SelFontSize = txtContent.SelFontSize - 1
+        Case 19
+            txtContent.SelFontSize = 11
+            
+    End Select
 End Sub
 
